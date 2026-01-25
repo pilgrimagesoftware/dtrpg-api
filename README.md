@@ -1,2 +1,3 @@
-# dtrpg-api-docs
+# dtrpg-api
+
 API documentation for DriveThruRPG
