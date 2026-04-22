@@ -38,6 +38,11 @@ paths:
 
         - `refreshTokenTTL`: Unix timestamp indicating when the refresh token
         expires.
+
+        These values define the API contract for downstream SDK and application
+        repositories. SDKs and applications may adapt these values into
+        language-specific or UX-specific behavior, but they must not redefine
+        their meaning.
       tags:
         - Auth
       requestBody:
@@ -70,8 +75,22 @@ paths:
                 refreshToken: >-
                   4496d1c728d6b238161013719b8f4ba18cd770ed2f2c8323e9d8b2749455fd2358f0a30ab71377eec464a135bc8e03ecaa0debc0e3a80d4116e85810f7c55d04
                 refreshTokenTTL: 1771547233
+        '401':
+          description: Authentication failed for the supplied application key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
+              example:
+                errorCode: invalid_application_key
+                message: The supplied application key is invalid or no longer active.
+                authState: unauthenticated
         default:
-          description: Failure
+          description: Request failed before an auth session could be established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -87,6 +106,10 @@ paths:
         This request asks for a list of products ordered by the user.
 
         The user is determined from the authentication token provided in the request.
+
+        If the token is expired, invalid, or otherwise unusable, the API
+        defines the resulting auth/session failure behavior and downstream
+        repositories must treat that behavior as the source of truth.
       tags:
         - Products
       security:
@@ -204,7 +227,11 @@ paths:
                           optionValueId: 8
                           optionType: digital
         default:
-          description: Failure
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -234,7 +261,11 @@ paths:
                   data:
                     $ref: '#/components/schemas/OrderProductItem'
         default:
-          description: Failure
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -270,7 +301,11 @@ paths:
               schema:
                 type: object
         default:
-          description: Failure
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -342,7 +377,11 @@ paths:
                       slug: settings
                       itemCount: 0
         default:
-          description: Failure
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -390,7 +429,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedResponse'
         default:
-          description: Failure
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -406,17 +449,44 @@ components:
       properties:
         token:
           type: string
-          description: JWT auth token used to authenticate subsequent requests.
+          description: JWT auth token used to authenticate subsequent requests until it expires or is otherwise invalidated by the API.
         refreshToken:
           type: string
-          description: Token that can be used to obtain a new auth token when the current one expires.
+          description: Token that can be used to obtain a new auth token when the current auth token expires, subject to API-defined refresh semantics.
         refreshTokenTTL:
           type: integer
-          description: Unix timestamp indicating when the refresh token expires.
+          description: Unix timestamp indicating when the refresh token expires according to API-owned session lifecycle semantics.
       required:
         - token
         - refreshToken
         - refreshTokenTTL
+
+    AuthSessionError:
+      type: object
+      description: Error payload for failures related to authentication or session state.
+      properties:
+        errorCode:
+          type: string
+          description: Machine-readable code describing the auth or session failure.
+          example: token_expired
+        message:
+          type: string
+          description: Human-readable explanation of the auth or session failure.
+          example: The authentication token has expired.
+        authState:
+          type: string
+          description: Session state observed by the API when the failure occurred.
+          enum:
+            - unauthenticated
+            - token_invalid
+            - token_expired
+            - refresh_expired
+            - unauthorized
+          example: token_expired
+      required:
+        - errorCode
+        - message
+        - authState
 
     PaginationLinks:
       type: object
