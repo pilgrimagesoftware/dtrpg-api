@@ -20,13 +20,39 @@ The `openapi.yaml` file defines:
 
 ### Current Endpoints
 
+#### Authentication 
+
 1. **POST /{DTRPG_API_VERSION}/auth_key** - Exchange application key for JWT authentication token
    - Returns: `token`, `refreshToken`, `refreshTokenTTL`
    - Uses applicationKey from environment variable
 
-2. **GET /{DTRPG_API_VERSION}/order_products** - Retrieve user's product library
+#### Product Library
+
+1. **GET /{DTRPG_API_VERSION}/order_products** - Retrieve user's product library
    - Query parameters: `getChecksum`, `getFilters`, `page`, `pageSize`, `library`, `archived`, `updatedDate[after]`
    - Requires: Authorization header with JWT token
+
+1. **GET /{DTRPG_API_VERSION}/order_products/{orderProductId}** - 
+   - Requires: Authorization header with JWT token
+
+1. **GET /{DTRPG_API_VERSION}/order_products/{orderProductId}/prepare** - 
+   - Requires: Authorization header with JWT token
+
+#### Collections
+
+1. **GET /{DTRPG_API_VERSION}/product_lists** - Get the list of the user's collections
+   - Requires: Authorization header with JWT token
+
+1. **POST /{DTRPG_API_VERSION}/product_lists** - Create a new collection
+   - Requires: Authorization header with JWT token
+   - Body: JSON object with `name` key
+
+1. **GET /{DTRPG_API_VERSION}/product_list_items** - Get items in a collection
+   - Requires: Authorization header with JWT token
+
+1. **POST /{DTRPG_API_VERSION}/product_list_items** - Add an item to a collection
+   - Requires: Authorization header with JWT token
+   - Body: JSON object with `productListId` and `productId` keys
 
 ## Modifying the API Specification
 
