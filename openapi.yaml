@@ -226,6 +226,25 @@ paths:
                           pricePrefix: +
                           optionValueId: 8
                           optionType: digital
+                      publisher:
+                        name: Monte Cook Games
+                        publisherId: 4952
+                        slug: monte-cook-games
+                      product:
+                        image: 4952/515276.jpg
+                        webImage: 4952/515276.webp
+                        thumbnail: 4952/515276-thumb140.jpg
+                        thumbnail100: 4952/515276-thumb100.jpg
+                        bundleId: 0
+                        dateCreated: '2025-03-13T16:07:01-05:00'
+                        productId: 515276
+                        description:
+                          name: The Wellspring
+                          slug: the-wellspring
+                        filesize: 24.13
+                      order:
+                        dateCreated: '2026-07-02T00:15:30-05:00'
+                        orderId: 52410664
         default:
           description: Request failed, including auth/session failures for missing, expired, or invalid token state
           content:
@@ -784,6 +803,15 @@ components:
           description: Purchase option attributes (e.g., download format selections)
           items:
             $ref: '#/components/schemas/OrderProductAttribute'
+        publisher:
+          description: Publisher metadata embedded directly on this ordered product
+          $ref: '#/components/schemas/OrderProductPublisher'
+        product:
+          description: Product catalog metadata (cover images, description) for this ordered product
+          $ref: '#/components/schemas/OrderProductInfo'
+        order:
+          description: Order summary metadata embedded on this ordered product
+          $ref: '#/components/schemas/OrderProductOrder'
       required:
         - orderId
         - productId
@@ -796,6 +824,120 @@ components:
         - orderProductId
         - customerId
         - files
+
+    OrderProductPublisher:
+      type: object
+      description: Publisher metadata embedded directly on an ordered product's attributes
+      properties:
+        name:
+          type: string
+          description: The display name of the publisher
+          example: Monte Cook Games
+        publisherId:
+          type: integer
+          description: The unique identifier of the publisher
+          example: 4952
+        slug:
+          type: string
+          description: The URL slug for the publisher's storefront page
+          example: monte-cook-games
+      required:
+        - name
+        - publisherId
+        - slug
+
+    OrderProductDescription:
+      type: object
+      description: Descriptive text for a product, embedded within `OrderProductInfo`
+      properties:
+        name:
+          type: string
+          description: The display name of the product
+          example: The Wellspring
+        purchaseNote:
+          type: string
+          description: HTML purchase note shown to the customer, if any
+          nullable: true
+        slug:
+          type: string
+          description: The URL slug for the product's storefront page
+          example: the-wellspring
+        shortDescription:
+          type: string
+          description: A short marketing description of the product
+          nullable: true
+      required:
+        - name
+        - slug
+
+    OrderProductInfo:
+      type: object
+      description: >-
+        Product catalog metadata embedded directly on an ordered product's attributes,
+        including relative paths to cover images. Image paths are relative to the
+        DriveThruRPG images base URL (`https://api.drivethrurpg.com/images/`).
+      properties:
+        image:
+          type: string
+          description: Relative path to the full-size cover image
+          example: 4952/515276.jpg
+          nullable: true
+        webImage:
+          type: string
+          description: Relative path to the web-optimized (WebP) cover image
+          example: 4952/515276.webp
+          nullable: true
+        thumbnail:
+          type: string
+          description: Relative path to the 140px cover thumbnail image
+          example: 4952/515276-thumb140.jpg
+          nullable: true
+        thumbnail100:
+          type: string
+          description: Relative path to the 100px cover thumbnail image
+          example: 4952/515276-thumb100.jpg
+          nullable: true
+        bundleId:
+          type: integer
+          description: Bundle ID if this product is part of a bundle, otherwise 0
+          example: 0
+        dateCreated:
+          type: string
+          format: date-time
+          description: Date and time when the product was added to the DTRPG catalog
+          example: '2025-03-13T16:07:01-05:00'
+          nullable: true
+        productId:
+          type: integer
+          description: Unique identifier for the product in the DTRPG catalog
+          example: 515276
+        description:
+          $ref: '#/components/schemas/OrderProductDescription'
+        filesize:
+          type: number
+          description: Total file size in megabytes
+          example: 24.13
+          nullable: true
+      required:
+        - bundleId
+        - productId
+
+    OrderProductOrder:
+      type: object
+      description: Order summary metadata embedded on an ordered product's attributes
+      properties:
+        dateCreated:
+          type: string
+          format: date-time
+          description: Date and time when the order was created
+          example: '2026-07-02T00:15:30-05:00'
+          nullable: true
+        orderId:
+          type: integer
+          description: The unique identifier of the order
+          example: 52410664
+      required:
+        - orderId
 
     OrderProductItem:
       type: object
