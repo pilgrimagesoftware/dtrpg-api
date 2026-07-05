@@ -7,7 +7,7 @@ The file documents the API endpoints for DriveThruRPG
 URL: `https://api.drivethrurpg.com`
 
 Path: `/api/vBeta`
-
+     
 ## Endpoints
 
 ### POST /auth_key
