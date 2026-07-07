@@ -1,0 +1,16 @@
+POST /api/vBeta/product_list_items HTTP/1.1
+host: api.drivethrurpg.com
+authorization: REDACTED
+content-type: application/json
+accept: application/json
+content-length: 43
+cookie: phnx_auth_cookie_hp=REDACTED; phnx_auth_cookie_s=REDACTED; phnx_auth_refresh_timer=1785984405; osCsid=REDACTED
+connection: Keep-Alive
+accept-encoding: gzip, deflate
+accept-language: en-US,*
+user-agent: Mozilla/5.0
+
+{
+  "productId": 515276,
+  "productListId": 86151
+}

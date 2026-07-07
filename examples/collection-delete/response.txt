@@ -1,0 +1,18 @@
+HTTP/1.1 204 No Content
+Date: Tue, 07 Jul 2026 02:47:41 GMT
+Connection: keep-alive
+Server: nginx
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+Accept-Patch: application/merge-patch+json, application/vnd.api+json
+Allow: OPTIONS, HEAD, GET, PUT, PATCH, DELETE
+Cache-Control: no-cache, private
+Link: <https://api.drivethrurpg.com/documentation?_format=jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+X-Clacks-Overhead: GNU Grace Hopper
+Strict-Transport-Security: max-age=15768000
+X-Varnish: 27554943
+Age: 0
+Via: 1.1 ip-10-10-32-40.us-east-2.compute.internal (Varnish/7.6)
+X-Cache: uncached
+Vary: Accept, cookie, authorization
+

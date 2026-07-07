@@ -401,6 +401,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthSessionError'
+    post:
+      summary: Create product list
+      description: >
+        Creates a new custom product list (collection) owned by the
+        authenticated user.
+      tags:
+        - Products
+      security:
+        - ApiKeyAuth: []
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductListCreateRequest'
+            example:
+              name: Test 1
+      responses:
+        '201':
+          description: Product list created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductListAttributes'
+              example:
+                customerId: 399144
+                name: Test 1
+                dateCreated: '2026-07-06T21:47:03-05:00'
+                productListId: 86150
+                slug: test-1
+                itemCount: 0
+        default:
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -408,6 +446,41 @@ paths:
         schema:
           type: string
         example: vBeta
+
+  /{DTRPG_API_VERSION}/product_lists/{productListId}:
+    delete:
+      summary: Delete product list
+      description: >
+        Deletes a custom product list (collection) owned by the
+        authenticated user.
+      tags:
+        - Products
+      security:
+        - ApiKeyAuth: []
+        - BearerAuth: []
+      responses:
+        '204':
+          description: Product list deleted
+        default:
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
+    parameters:
+      - name: DTRPG_API_VERSION
+        in: path
+        required: true
+        schema:
+          type: string
+        example: vBeta
+      - name: productListId
+        in: path
+        required: true
+        description: The ID of the product list to delete
+        schema:
+          type: integer
+        example: 86150
 
   /{DTRPG_API_VERSION}/product_list_items:
     get:
@@ -453,6 +526,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthSessionError'
+    post:
+      summary: Add product list item
+      description: >
+        Adds a product to a custom product list (collection) owned by the
+        authenticated user.
+      tags:
+        - Products
+      security:
+        - ApiKeyAuth: []
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductListItemCreateRequest'
+            example:
+              productId: 515276
+              productListId: 86151
+      responses:
+        '201':
+          description: Product list item created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductListItemCreateResponse'
+              example:
+                productId: 515276
+                productListId: 86151
+                productListItemId: 2629321
+        default:
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
     parameters:
       - name: DTRPG_API_VERSION
         in: path
@@ -460,6 +569,41 @@ paths:
         schema:
           type: string
         example: vBeta
+
+  /{DTRPG_API_VERSION}/product_list_items/{productListItemId}:
+    delete:
+      summary: Delete product list item
+      description: >
+        Removes a product from a custom product list (collection) owned by
+        the authenticated user.
+      tags:
+        - Products
+      security:
+        - ApiKeyAuth: []
+        - BearerAuth: []
+      responses:
+        '204':
+          description: Product list item deleted
+        default:
+          description: Request failed, including auth/session failures for missing, expired, or invalid token state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSessionError'
+    parameters:
+      - name: DTRPG_API_VERSION
+        in: path
+        required: true
+        schema:
+          type: string
+        example: vBeta
+      - name: productListItemId
+        in: path
+        required: true
+        description: The ID of the product list item to delete
+        schema:
+          type: integer
+        example: 2629322
 
 components:
   schemas:
@@ -1101,6 +1245,54 @@ components:
         - links
         - meta
         - data
+
+    ProductListCreateRequest:
+      type: object
+      description: Request body for creating a new product list
+      properties:
+        name:
+          type: string
+          description: Display name of the new product list
+          example: Maps
+      required:
+        - name
+
+    ProductListItemCreateRequest:
+      type: object
+      description: Request body for adding a product to a product list
+      properties:
+        productId:
+          type: integer
+          description: Unique identifier of the product to add
+          example: 515276
+        productListId:
+          type: integer
+          description: Unique identifier of the product list to add the product to
+          example: 86151
+      required:
+        - productId
+        - productListId
+
+    ProductListItemCreateResponse:
+      type: object
+      description: The created product list item
+      properties:
+        productId:
+          type: integer
+          description: Unique identifier of the product added to the list
+          example: 515276
+        productListId:
+          type: integer
+          description: Unique identifier of the product list the product was added to
+          example: 86151
+        productListItemId:
+          type: integer
+          description: Unique identifier assigned to this product list item
+          example: 2629321
+      required:
+        - productId
+        - productListId
+        - productListItemId
 
   securitySchemes:
     ApiKeyAuth:

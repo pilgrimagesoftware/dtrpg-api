@@ -1,0 +1,10 @@
+DELETE /api/vBeta/product_list_items/2629322 HTTP/1.1
+host: api.drivethrurpg.com
+authorization: REDACTED
+content-type: application/json
+accept: application/json
+cookie: phnx_auth_cookie_hp=REDACTED; phnx_auth_cookie_s=REDACTED; phnx_auth_refresh_timer=1785984405; osCsid=REDACTED
+connection: Keep-Alive
+accept-encoding: gzip, deflate
+accept-language: en-US,*
+user-agent: Mozilla/5.0

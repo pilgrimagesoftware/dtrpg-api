@@ -1,0 +1,28 @@
+HTTP/1.1 201 Created
+Date: Tue, 07 Jul 2026 02:49:46 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 70
+Connection: keep-alive
+Server: nginx
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+Accept-Patch: application/merge-patch+json, application/vnd.api+json
+Content-Location: /api/vBeta/product_list_items/2629321.json
+Location: /api/vBeta/product_list_items/2629321
+Accept-Post: application/vnd.api+json, application/json, application/ld+json, text/html, multipart/form-data, multipart/form-data
+Allow: OPTIONS, HEAD, GET, POST
+Cache-Control: no-cache, private
+Link: <https://api.drivethrurpg.com/documentation?_format=jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+X-Clacks-Overhead: GNU Vincent Price
+Strict-Transport-Security: max-age=15768000
+X-Varnish: 16503356
+Age: 0
+Via: 1.1 ip-10-10-32-40.us-east-2.compute.internal (Varnish/7.6)
+X-Cache: uncached
+Vary: Accept, cookie, authorization
+
+{
+  "productId": 515276,
+  "productListId": 86151,
+  "productListItemId": 2629321
+}
