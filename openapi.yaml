@@ -61,8 +61,8 @@ paths:
                 Sets the refreshToken cookie used by the refresh endpoint.
                 Scoped to the refresh path, secure and httponly.
               example: >-
-                refreshToken=4496d1c728d6b238161013719b8f4ba18cd770ed2f2c8323e9d8b2749455fd2358f0a30ab71377eec464a135bc8e03ecaa0debc0e3a80d4116e85810f7c55d04;
-                expires=Fri, 20 Feb 2026 00:27:13 GMT; Max-Age=2592000;
+                refreshToken=3f7039d454ec8e368c3ee5bdc7fe1408270e4b6a37831cb01779bd52890ffeb6f05e4824d4a5e0524c212124cc444168828856c1ddf32ab72756a08227e90962;
+                expires=Fri, 31 Jan 2025 00:00:00 GMT; Max-Age=2592000;
                 path=/api/vBeta/auth/refresh; domain=.drivethrurpg.com; secure;
                 httponly; samesite=strict
           content:
@@ -71,10 +71,10 @@ paths:
                 $ref: '#/components/schemas/AuthTokenResponse'
               example:
                 token: >-
-                  eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Njg5NTUyMzMsImV4cCI6MTc2ODk3NjgzMywicm9sZXMiOlsiUk9MRV9QUk9YWSIsIlJPTEVfTElCUkFSSUFOIl0sImVtYWlsIjoicGF1bEBzY2hpZmZlcmVycy5uZXQiLCJwcmV2aW91c0xvZ2luIjp7ImRhdGUiOiIyMDI2LTAxLTE5IDIwOjExOjQ3LjAwMDAwMCIsInRpbWV6b25lX3R5cGUiOjMsInRpbWV6b25lIjoiVVMvQ2VudHJhbCJ9LCJ1c2VybmFtZSI6InBhdWxAc2NoaWZmZXJlcnMubmV0Iiwic2l0ZUlkIjoxMCwiZ3JvdXBJZCI6MSwibmFtZSI6IkRyaXZlVGhydVJQRy5jb20iLCJsb2dpbklwIjoiOTguOTcuNDEuMTQ0IiwiZG9tYWluIjoiYXBpLmRyaXZldGhydXJwZy5jb20iLCJsb2dpbk9yaWdpbiI6MjUsInJvbGVfbGlicmFyaWFuIjoxLCJyb2xlX2Rpc3RyaWJ1dG9yIjowLCJyb2xlX2dsb2JhbF9kaXN0cmlidXRvciI6MCwiY3VycmVudElwIjoiOTguOTcuNDEuMTQ0IiwiY3VzdG9tZXJJZCI6Mzk5MTQ0LCJjdXN0b21lckZpcnN0TmFtZSI6IlBhdWwiLCJjdXN0b21lckxhc3ROYW1lIjoiU2NoaWZmZXJlciIsInB1Ymxpc2hlcklkIjoxMjkxNiwiaW5pdGlhbEFkdWx0Q29udGVudE9wdEluIjpmYWxzZSwiaW5pdGlhbEFpR2VuQ29udGVudEVuYWJsZWQiOnRydWUsImluaXRpYWxEZWZhdWx0Q3VycmVuY3kiOiJVU0QiLCJpbml0aWFsRGVmYXVsdExhbmd1YWdlSWQiOjEsImlzR3Vlc3QiOmZhbHNlLCJiYXNrZXRVVUlEIjoiMzk3NTUyNDctYTU5MS00OTFmLTgyOTktNGNlNGJmZTE4YzM0In0.liWGMSyhTKAlWKmFAIIf-xDZkN5yPHHaP6epkwNxZoM9si9x5XgxGuTbUNPl3K-OfCtxUrqCMUVt7CWgA2iWcxj_rEIdtbwlVUZQ4Da8Q0unxnz6ogwBTlIB1x64Qye-qDxJYUrw8F3Gj9gm8utg0h04-KtSCCGb8yLqLQSePSmS47Fvah3FKLPuH8ufbgYP5fttLW3Nz44cjkPPsLBKf1nVXplVC6GGnEw2h6jAaS_tikcFo816krlm_rDijRKBHfdyC3I8BJgqu5CyJ_xFvcArNg-Sajl7s7ilUuv6lSvAHEPpodZsSCERJXberqJvvY4Wyiil5OBLgfcfWRCoVQ
+                  eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzU2ODk2MDAsImV4cCI6MTczNTcxMTIwMCwicm9sZXMiOlsiUk9MRV9QUk9YWSIsIlJPTEVfTElCUkFSSUFOIl0sImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsInByZXZpb3VzTG9naW4iOnsiZGF0ZSI6IjIwMjUtMDEtMTUgMTI6MDA6MDAuMDAwMDAwIiwidGltZXpvbmVfdHlwZSI6MywidGltZXpvbmUiOiJVVEMifSwidXNlcm5hbWUiOiJ1c2VyQGV4YW1wbGUuY29tIiwic2l0ZUlkIjoxMCwiZ3JvdXBJZCI6MSwibmFtZSI6IkRyaXZlVGhydVJQRy5jb20iLCJsb2dpbklwIjoiMjAzLjAuMTEzLjEwIiwiZG9tYWluIjoiYXBpLmRyaXZldGhydXJwZy5jb20iLCJsb2dpbk9yaWdpbiI6MjUsInJvbGVfbGlicmFyaWFuIjoxLCJyb2xlX2Rpc3RyaWJ1dG9yIjowLCJyb2xlX2dsb2JhbF9kaXN0cmlidXRvciI6MCwiY3VycmVudElwIjoiMjAzLjAuMTEzLjEwIiwiY3VzdG9tZXJJZCI6MTIzNDU2LCJjdXN0b21lckZpcnN0TmFtZSI6IkV4YW1wbGUiLCJjdXN0b21lckxhc3ROYW1lIjoiVXNlciIsInB1Ymxpc2hlcklkIjowLCJpbml0aWFsQWR1bHRDb250ZW50T3B0SW4iOmZhbHNlLCJpbml0aWFsQWlHZW5Db250ZW50RW5hYmxlZCI6dHJ1ZSwiaW5pdGlhbERlZmF1bHRDdXJyZW5jeSI6IlVTRCIsImluaXRpYWxEZWZhdWx0TGFuZ3VhZ2VJZCI6MSwiaXNHdWVzdCI6ZmFsc2UsImJhc2tldFVVSUQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAifQ.AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0-P0BBQkNERUZHSElKS0xNTk9QUVJTVFVWV1hZWltcXV5fYGFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6e3x9fn-AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrq-wsbKztLW2t7i5uru8vb6_wMHCw8TFxsfIycrLzM3Oz9DR0tPU1dbX2Nna29zd3t_g4eLj5OXm5-jp6uvs7e7v8PHy8_T19vf4-fr7_P3-_w
                 refreshToken: >-
-                  4496d1c728d6b238161013719b8f4ba18cd770ed2f2c8323e9d8b2749455fd2358f0a30ab71377eec464a135bc8e03ecaa0debc0e3a80d4116e85810f7c55d04
-                refreshTokenTTL: 1771547233
+                  3f7039d454ec8e368c3ee5bdc7fe1408270e4b6a37831cb01779bd52890ffeb6f05e4824d4a5e0524c212124cc444168828856c1ddf32ab72756a08227e90962
+                refreshTokenTTL: 1738281600
         '401':
           description: Authentication failed for the supplied application key
           content:
@@ -197,7 +197,7 @@ paths:
                       archived: 0
                       addOnInfo: null
                       orderProductId: 170405504
-                      customerId: 399144
+                      customerId: 123456
                       fileLastModified: '2024-07-16T10:45:52-05:00'
                       fileLastDownloaded: '2025-11-26T16:25:56-06:00'
                       files:
@@ -380,7 +380,7 @@ paths:
                   - id: /api/vBeta/product_lists/1498
                     type: ProductList
                     attributes:
-                      customerId: 399144
+                      customerId: 123456
                       name: Maps
                       dateCreated: '2022-06-22T21:25:25-05:00'
                       productListId: 1498
@@ -389,7 +389,7 @@ paths:
                   - id: /api/vBeta/product_lists/1499
                     type: ProductList
                     attributes:
-                      customerId: 399144
+                      customerId: 123456
                       name: Settings
                       dateCreated: '2022-06-22T21:25:31-05:00'
                       productListId: 1499
@@ -427,7 +427,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProductListAttributes'
               example:
-                customerId: 399144
+                customerId: 123456
                 name: Test 1
                 dateCreated: '2026-07-06T21:47:03-05:00'
                 productListId: 86150
@@ -914,7 +914,7 @@ components:
         customerId:
           type: integer
           description: Unique identifier for the customer who purchased the product
-          example: 399144
+          example: 123456
         fileLastModified:
           type: string
           format: date-time
@@ -1177,7 +1177,7 @@ components:
         customerId:
           type: integer
           description: Unique identifier for the customer who owns this list
-          example: 399144
+          example: 123456
         name:
           type: string
           description: Display name of the product list

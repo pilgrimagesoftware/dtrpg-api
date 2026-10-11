@@ -22,7 +22,7 @@ X-Cache: uncached
 Vary: Accept, cookie, authorization
 
 {
-  "customerId": 399144,
+  "customerId": 123456,
   "name": "Test 1",
   "dateCreated": "2026-07-06T21:47:03-05:00",
   "productListId": 86150,
