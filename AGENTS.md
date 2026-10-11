@@ -69,4 +69,4 @@ When making changes to the OpenAPI specification:
 - This repository is used as a **git submodule** in multiple SDK repositories
 - Changes here affect ALL language implementations
 - The OpenAPI specification should remain language-agnostic
-- Example values in the spec may contain real JWT tokens for reference but should not be treated as valid credentials
+- Example values in this specification must **always be synthetic**. Never commit real credentials, tokens, API keys, session cookies, refresh tokens, or personally identifiable information (PII) to examples. Use clearly fake placeholders that preserve the expected shape (for example `user@example.com`, RFC 5737 documentation IPs such as `203.0.113.10`, or sequence-based identifiers)
